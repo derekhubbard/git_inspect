@@ -2,7 +2,7 @@ defmodule GitInspect.Github.MockClient do
   def get(url) do
     case String.split(url, "/") do
       ["users", username, "repos"] -> repositories_list_users(username)
-      [_] -> IO.puts("Not support yet")
+      [_] -> IO.puts("Not supported yet")
     end
   end
 
