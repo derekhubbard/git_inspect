@@ -9,8 +9,8 @@ defmodule GitInspect.PullRequests.Inspector do
     GenServer.start_link(__MODULE__, organization, name: __MODULE__)
   end
 
-  def get_by_name(name) do
-    GenServer.call(__MODULE__, {:get_by_name, name})
+  def get_by_title(name) do
+    GenServer.call(__MODULE__, {:get_by_title, name})
   end
 
   # server api
@@ -40,9 +40,9 @@ defmodule GitInspect.PullRequests.Inspector do
     repositories |> Enum.reduce([], &(&2 ++ PullRequests.list(&1["owner"]["login"], &1["name"])))
   end
 
-  def handle_call({:get_by_name, name}, _from, pulls) do
+  def handle_call({:get_by_title, title}, _from, pulls) do
     filtered_pulls = pulls
-    |> Enum.filter(&(&1.name == name))
+    |> Enum.filter(&(&1["title"] == title))
 
     {:reply, filtered_pulls, pulls}
   end

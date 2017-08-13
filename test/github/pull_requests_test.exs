@@ -8,7 +8,7 @@ defmodule GitInspect.Github.PullRequestsTest do
 
     pulls = PullRequests.list(owner, repository)
 
-    pulls |> Enum.each(&(assert &1.owner == owner))
-    pulls |> Enum.each(&(assert &1.repository == repository))
+    pulls |> Enum.each(&(assert &1["head"]["repo"]["owner"]["login"] == owner))
+    pulls |> Enum.each(&(assert &1["head"]["repo"]["name"] == repository))
   end
 end
