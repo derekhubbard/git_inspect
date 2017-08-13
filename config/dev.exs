@@ -1,3 +1,3 @@
 use Mix.Config
 
-config :git_inspect, :github_repo, GitInspect.Github.LocalRepo
+config :git_inspect, :github_client, GitInspect.Github.MockClient
