@@ -3,14 +3,14 @@ defmodule GitInspect.Github.PullRequestsIntegrationTest do
   alias GitInspect.Github.GithubClient
 
   @moduletag :github_api
-  @moduletag :skip
 
   test "list retrieves pull requests from github" do
     user = "lodash"
     repo = "lodash"
 
-    pull_requests = GithubClient.get("repos/#{user}/#{repo}/pulls")
+    {:ok, %HTTPoison.Response{headers: _headers, body: body, status_code: status_code}} = GithubClient.get("repos/#{user}/#{repo}/pulls")
 
-    assert is_list(pull_requests)
+    assert status_code == 200
+    assert is_list(body)
   end
 end

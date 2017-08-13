@@ -18,8 +18,10 @@ defmodule GitInspect.Github.MockClient do
   end
 
   defp pulls_list(owner, repo) do
-    [
+    pulls = [
       %{ id: 1, owner: owner, repository: repo, name: "pull request name" }
     ]
+
+    {:ok, %HTTPoison.Response{headers: nil, body: pulls, status_code: 200}}
   end
 end
