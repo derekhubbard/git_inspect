@@ -29,5 +29,6 @@ use Mix.Config
 #
 
 config :git_inspect, :github_endpoint, "https://api.github.com/graphql"
+config :git_inspect, :github_auth_token, "keep your auth token out of source control by adding it to the prod.secret.exs file"
 
 import_config "#{Mix.env}.exs"
