@@ -37,7 +37,7 @@ defmodule GitInspect.PullRequests.Inspector do
   end
 
   defp load_pull_requests(repositories) do
-    repositories |> Enum.reduce([], &(&2 ++ PullRequests.list(&1.user, &1.name)))
+    repositories |> Enum.reduce([], &(&2 ++ PullRequests.list(&1["owner"]["login"], &1["name"])))
   end
 
   def handle_call({:get_by_name, name}, _from, pulls) do

@@ -1,4 +1,8 @@
 defmodule GitInspect.Github.MockClient do
+  alias GitInspect.Github.MockRepo
+
+  @repo File.read("mock_repo.json")
+
   def get(url) do
     case String.split(url, "/") do
       ["users", username, "repos"] -> repositories_list_users(username)
@@ -8,12 +12,9 @@ defmodule GitInspect.Github.MockClient do
   end
 
   defp repositories_list_users(username) do
-    # TODO: Replace this list of pull requests with repositories
     repositories = [
-      %{ id: 1, name: "one pull request", user: username },
-      %{ id: 2, name: "another pull request", user: username }
+      MockRepo.get_repo()
     ]
-
     {:ok, %HTTPoison.Response{headers: nil, body: repositories, status_code: 200}}
   end
 
@@ -21,7 +22,6 @@ defmodule GitInspect.Github.MockClient do
     pulls = [
       %{ id: 1, owner: owner, repository: repo, name: "pull request name" }
     ]
-
     {:ok, %HTTPoison.Response{headers: nil, body: pulls, status_code: 200}}
   end
 end

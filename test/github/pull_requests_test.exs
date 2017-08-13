@@ -3,8 +3,8 @@ defmodule GitInspect.Github.PullRequestsTest do
   alias GitInspect.Github.PullRequests
 
   test "list retrieves pull requests for the specified owner and repository" do
-    owner = "lodash"
-    repository = "lodash.com"
+    owner = "octocat"
+    repository = "Hello-World"
 
     pulls = PullRequests.list(owner, repository)
 
