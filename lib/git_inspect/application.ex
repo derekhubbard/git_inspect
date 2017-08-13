@@ -8,8 +8,7 @@ defmodule GitInspect.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Starts a worker by calling: GitInspect.Worker.start_link(arg)
-      # {GitInspect.Worker, arg},
+      {GitInspect.PullRequests.Inspector, "lodash"},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
