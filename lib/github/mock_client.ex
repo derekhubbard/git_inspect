@@ -9,10 +9,12 @@ defmodule GitInspect.Github.MockClient do
 
   defp repositories_list_users(username) do
     # TODO: Replace this list of pull requests with repositories
-    [
+    repositories = [
       %{ id: 1, name: "one pull request", user: username },
       %{ id: 2, name: "another pull request", user: username }
     ]
+
+    {:ok, %HTTPoison.Response{headers: nil, body: repositories, status_code: 200}}
   end
 
   defp pulls_list(owner, repo) do

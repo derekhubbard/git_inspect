@@ -3,9 +3,9 @@ defmodule GitInspect.Github.RepositoriesTest do
   alias GitInspect.Github.Repositories
 
   test "list users retrieves repositories for the specified user" do
-    test_user = "lodash"
-    repositories = Repositories.list_users(test_user)
+    user = "lodash"
+    repositories = Repositories.list_users(user)
 
-    repositories |> Enum.each(&(assert &1.user == test_user))
+    repositories |> Enum.each(&(assert &1.user == user))
   end
 end
