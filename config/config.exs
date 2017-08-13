@@ -29,6 +29,6 @@ use Mix.Config
 #
 
 config :git_inspect, :github_endpoint, "https://api.github.com/"
-config :git_inspect, :github_auth_token, System.get_env("AUTH_TOKEN")
+config :git_inspect, :github_auth_token, System.get_env("GITHUB_AUTH_TOKEN")
 
 import_config "#{Mix.env}.exs"

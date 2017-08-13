@@ -2,8 +2,8 @@ defmodule GitInspect.Github.PullRequestsIntegrationTest do
   use ExUnit.Case
   alias GitInspect.Github.GithubClient
 
-  @moduletag github_api: false
-  @tag :skip
+  @moduletag :github_api
+  @moduletag :skip
 
   test "list retrieves pull requests from github" do
     user = "lodash"
