@@ -1,7 +1,7 @@
-defmodule GitInspect.PullRequestsTest do
+defmodule GitInspect.PullRequests.InspectorTest do
   use ExUnit.Case
   alias GitInspect.PullRequests.Inspector
-
+  
   test "returns pull requests filtered by name" do
     expected_name = "one pull request"
 
