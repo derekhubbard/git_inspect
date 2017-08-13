@@ -1,6 +1,6 @@
 defmodule GitInspect.PullRequests.Inspector do
   use GenServer
-  alias GitInspect.Github.Repositories
+  alias GitInspect.Github.{Repositories, PullRequests}
 
   # client api
 
@@ -22,12 +22,22 @@ defmodule GitInspect.PullRequests.Inspector do
   defp load(organization) do
     IO.puts "#### Retrieving repositories and pull requests for #{organization}..."
 
-    repositories = Repositories.list_users(organization)
-
-    # TODO: retrieve pull requests
+    # note: these are going to be synchronous/blocking calls.
+    # we can replace this with async queues/tasks to speed this up if performance is an issue.
+    repositories = load_repositories(organization)
+    pull_requests = repositories
+    |> load_pull_requests
 
     IO.puts "#### Repositories and pull requests retrieved."
-    repositories
+    pull_requests
+  end
+
+  defp load_repositories(organization) do
+    Repositories.list_users(organization)
+  end
+
+  defp load_pull_requests(repositories) do
+    repositories |> Enum.reduce([], &(&2 ++ PullRequests.list(&1.user, &1.name)))
   end
 
   def handle_call({:get_by_name, name}, _from, pulls) do

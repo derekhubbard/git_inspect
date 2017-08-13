@@ -6,6 +6,6 @@ defmodule GitInspect.Github.RepositoriesTest do
     test_user = "lodash"
     repositories = Repositories.list_users(test_user)
 
-    repositories |> Enum.map(&(assert &1.user == test_user))
+    repositories |> Enum.each(&(assert &1.user == test_user))
   end
 end

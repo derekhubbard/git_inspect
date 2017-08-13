@@ -2,6 +2,7 @@ defmodule GitInspect.Github.MockClient do
   def get(url) do
     case String.split(url, "/") do
       ["users", username, "repos"] -> repositories_list_users(username)
+      ["repos", owner, repo, "pulls"] -> pulls_list(owner, repo)
       [_] -> IO.puts("Not supported yet")
     end
   end
@@ -11,6 +12,12 @@ defmodule GitInspect.Github.MockClient do
     [
       %{ id: 1, name: "one pull request", user: username },
       %{ id: 2, name: "another pull request", user: username }
+    ]
+  end
+
+  defp pulls_list(owner, repo) do
+    [
+      %{ id: 1, owner: owner, repository: repo, name: "pull request name" }
     ]
   end
 end
