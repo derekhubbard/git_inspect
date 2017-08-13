@@ -25,7 +25,8 @@ defmodule GitInspect.Mixfile do
   defp deps do
     [
       {:mix_test_watch, "~> 0.4.1"},
-      {:excoveralls, "~> 0.7.2"}
+      {:excoveralls, "~> 0.7.2"},
+      {:httpoison, "~> 0.13.0"}
     ]
   end
 end

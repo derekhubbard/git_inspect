@@ -1,7 +1,7 @@
 defmodule GitInspect.PullRequests.Inspector do
   use GenServer
 
-  @github_api Application.get_env(:git_inspect, :github_api)
+  @github_repo Application.get_env(:git_inspect, :github_repo)
 
   # client api
 
@@ -23,7 +23,7 @@ defmodule GitInspect.PullRequests.Inspector do
   defp load(organization) do
     IO.puts "#### Retrieving pull requests for #{organization}..."
     # TODO: load pull requests from github
-    pull_requests = @github_api.get_pull_requests(organization)
+    pull_requests = @github_repo.get_pull_requests(organization)
     IO.puts "#### Pull requests retrieved."
     pull_requests
   end
