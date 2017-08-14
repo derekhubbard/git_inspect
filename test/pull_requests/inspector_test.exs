@@ -2,6 +2,11 @@ defmodule GitInspect.PullRequests.InspectorTest do
   use ExUnit.Case
   alias GitInspect.PullRequests.Inspector
 
+  test "get all returns all pull requests" do
+    pulls = Inspector.get_all()
+    assert pulls |> length > 0
+  end
+
   test "returns pull requests filtered by title" do
     expected_title = "new-feature"
 
