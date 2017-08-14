@@ -8,9 +8,9 @@ defmodule GitInspect.Github.PullRequestsIntegrationTest do
     user = "octocat"
     repo = "Hello-World"
 
-    {:ok, %HTTPoison.Response{headers: _headers, body: body, status_code: status_code}} = GithubClient.get("repos/#{user}/#{repo}/pulls")
+    result = GithubClient.get("repos/#{user}/#{repo}/pulls")
 
-    assert status_code == 200
-    assert is_list(body)
+    assert is_list(result)
+    assert length(result) > 0
   end
 end
