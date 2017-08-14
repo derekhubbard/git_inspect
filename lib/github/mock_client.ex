@@ -1,11 +1,12 @@
 defmodule GitInspect.Github.MockClient do
+  require Logger
   alias GitInspect.Github.MockRepo
 
   def get(url) do
     case String.split(url, "/") do
       ["users", _username, "repos"] -> repositories_list_users()
       ["repos", _owner, _repo, "pulls"] -> pulls_list()
-      [_] -> IO.puts("Not supported yet")
+      [_] -> Logger.error "Not supported yet"
     end
   end
 
