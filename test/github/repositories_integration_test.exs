@@ -3,6 +3,7 @@ defmodule GitInspect.Github.RepositoriesIntegrationTest do
   alias GitInspect.Github.GithubClient
 
   @moduletag :github_api
+  @moduletag :skip
 
   test "list users retrieves repositories from github" do
     user = "octocat"

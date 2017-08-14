@@ -1,7 +1,7 @@
 defmodule GitInspect.Github.MockClient do
   require Logger
   alias GitInspect.Github.MockRepo
-
+  def get(url, [], _), do: get(url)
   def get(url) do
     case String.split(url, "/") do
       ["users", _username, "repos"] -> repositories_list_users(url)
