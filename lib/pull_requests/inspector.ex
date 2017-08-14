@@ -1,11 +1,12 @@
 defmodule GitInspect.PullRequests.Inspector do
   use GenServer
+  require Logger
   alias GitInspect.Github.{Repositories, PullRequests}
 
   # client api
 
   def start_link(organization) do
-    IO.puts "#### Starting pull request inspector for #{organization}..."
+    Logger.info "#### Starting pull request inspector for #{organization}..."
     GenServer.start_link(__MODULE__, organization, name: __MODULE__)
   end
 
@@ -20,7 +21,7 @@ defmodule GitInspect.PullRequests.Inspector do
   end
 
   defp load(organization) do
-    IO.puts "#### Retrieving repositories and pull requests for #{organization}..."
+    Logger.debug "#### Retrieving repositories and pull requests for #{organization}..."
 
     # note: these are going to be synchronous/blocking calls.
     # we can replace this with async queues/tasks to speed this up if performance is an issue.
@@ -28,7 +29,9 @@ defmodule GitInspect.PullRequests.Inspector do
     pull_requests = repositories
     |> load_pull_requests
 
-    IO.puts "#### Repositories and pull requests retrieved."
+    Logger.info "Repositories: #{length(repositories)}, Pull Requests: #{length(pull_requests)}"
+
+    Logger.info "#### Repositories and pull requests retrieved."
     pull_requests
   end
 
