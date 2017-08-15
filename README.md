@@ -14,7 +14,7 @@ For information on creating a new personal access token for Github, check out [t
 GitInspect currently supports specifying the personal access token using an environment variable named `GITHUB_AUTH_TOKEN`.
 
 ```
-GITHUB_AUTH_TOKEN="<ENTER_AUTH_TOKEN_HERE"
+GITHUB_AUTH_TOKEN="<ENTER_AUTH_TOKEN_HERE>"
 ```
 
 This can be specified on the command line before running the application.
