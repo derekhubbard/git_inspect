@@ -1,5 +1,5 @@
 # GitInspect
-GitInspect is an Elixir application to retrieve data from Github and then allow the user to query data and inspect it in interesting ways.
+GitInspect is an Elixir application for retrieving data from Github and then analyzing it in interesting ways.
 
 ## Installation
 GitInspect is an Elixir application. Elixir and the Erlang VM will need to be installed to run GitInspect locally.
@@ -48,4 +48,4 @@ To run the integration tests, run the following command:
 iex -S mix test --only github_api
 ```
 
-A personal access token for the Github API is required to run the integration tests. 
+A personal access token for the Github API is required to run the integration tests.
