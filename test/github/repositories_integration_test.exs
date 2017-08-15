@@ -1,5 +1,5 @@
 defmodule GitInspect.Github.RepositoriesIntegrationTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   alias GitInspect.Github.GithubClient
 
   @moduletag :github_api

@@ -1,5 +1,5 @@
 defmodule GitInspect.Github.PullRequestsTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias GitInspect.Github.PullRequests
 
   test "list retrieves pull requests for the specified owner and repository" do

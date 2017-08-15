@@ -1,5 +1,5 @@
 defmodule GitInspect.Github.GithubClientTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias GitInspect.Github.GithubClient
 
   test "adds the authorization header to the request headers" do

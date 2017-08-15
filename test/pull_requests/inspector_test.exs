@@ -1,5 +1,5 @@
 defmodule GitInspect.PullRequests.InspectorTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias GitInspect.PullRequests.Inspector
 
   test "get all returns all pull requests" do

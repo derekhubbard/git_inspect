@@ -1,5 +1,5 @@
 defmodule GitInspect.Github.MockClientTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias GitInspect.Github.MockClient
 
   test "getting user repositories returns list of repositories" do
