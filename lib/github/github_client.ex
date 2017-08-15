@@ -17,10 +17,9 @@ defmodule GitInspect.Github.GithubClient do
   defp build_url(url), do: @endpoint <> url
 
   defp paginate_response(%HTTPoison.Response{headers: headers, body: body}, results) do
-    link_header = headers
+    headers
     |> Enum.reduce(nil, &(extract_link_header(&1, &2)))
-
-    case link_header do
+    |> case do
       nil -> body
       value -> do_paginate_response(ExLinkHeader.parse!(value), results ++ body)
     end
@@ -35,8 +34,8 @@ defmodule GitInspect.Github.GithubClient do
 
   defp do_paginate_response(%ExLinkHeader{next: nil}, results), do: results
   defp do_paginate_response(%ExLinkHeader{next: %ExLinkHeaderEntry{ url: next_url }}, results) do
-    response = request!(:get, next_url)
-    paginate_response(response, results)
+    request!(:get, next_url)
+    |> paginate_response(results)
   end
 
   def process_request_headers(headers), do:  headers ++ ["Authorization": "bearer #{@auth_token}"]

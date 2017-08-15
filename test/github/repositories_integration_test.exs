@@ -9,5 +9,12 @@ defmodule GitInspect.Github.RepositoriesIntegrationTest do
     result = GithubClient.get("users/#{user}/repos")
     assert is_list(result)
     assert length(result) > 0
+
+    [first_result | _] = result
+    assert_repo_properties(first_result)
+  end
+
+  defp assert_repo_properties(_repo) do
+    # repo.
   end
 end
