@@ -28,7 +28,8 @@ defmodule GitInspect.Mixfile do
       {:excoveralls, "~> 0.7.2"},
       {:httpoison, "~> 0.13.0"},
       {:exjsx, "~> 4.0"},
-      {:ex_link_header, "~> 0.0.5"}
+      {:ex_link_header, "~> 0.0.5"},
+      {:ex_json_schema, "~> 0.5.5"}
     ]
   end
 end
