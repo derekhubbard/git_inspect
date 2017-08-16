@@ -11,7 +11,10 @@ defmodule GitInspect.Github.RepositoriesIntegrationTest do
 
     assert is_list(results)
     assert length(results) > 0
+
     repo_schema = get_schema()
+    |> ExJsonSchema.Schema.resolve
+    
     results
     |> Enum.each(&(assert ExJsonSchema.Validator.validate(repo_schema, &1) == :ok))
   end
@@ -197,6 +200,6 @@ defmodule GitInspect.Github.RepositoriesIntegrationTest do
         "subscribers_count" => %{ "type" => "number" },
         "network_count" => %{ "type" => "number" }
       }
-    } |> ExJsonSchema.Schema.resolve
+    }
   end
 end
