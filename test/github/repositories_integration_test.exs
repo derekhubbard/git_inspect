@@ -14,22 +14,13 @@ defmodule GitInspect.Github.RepositoriesIntegrationTest do
 
     repo_schema = get_schema()
     |> ExJsonSchema.Schema.resolve
-    
+
     results
     |> Enum.each(&(assert ExJsonSchema.Validator.validate(repo_schema, &1) == :ok))
   end
 
   defp get_schema() do
     %{
-      "defintions" => %{
-        "owner" => %{
-          "type" => "object",
-          "required" => [],
-          "properties" => %{
-            "login" => %{ "type" => "string" }
-          }
-        }
-      },
       "type" => "object",
       "required" => [
         "id",
