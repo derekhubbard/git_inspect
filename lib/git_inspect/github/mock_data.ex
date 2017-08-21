@@ -1,10 +1,10 @@
 defmodule GitInspect.Github.MockData do
 
-  @mock_repo "fixtures/mock_repo.json"
-  @mock_pull_request "fixtures/mock_pull_request.json"
+  @mock_repository "fixtures/github_repository.json"
+  @mock_pull_request "fixtures/github_pull_request.json"
 
   def get_repo do
-    read_mock_file(@mock_repo)
+    read_mock_file(@mock_repository)
   end
 
   def get_pull_request do
