@@ -19,7 +19,8 @@ defmodule GitInspect.Github.MockClient do
 
   defp pulls_list() do
     [
-      build(:pull_request)
+      build(:pull_request, title: "feature-1"),
+      build(:pull_request, title: "feature-2")
     ]
   end
 end
