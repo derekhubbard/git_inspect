@@ -1,4 +1,4 @@
-defmodule GitInspect.Github.MockRepo do
+defmodule GitInspect.Github.MockData do
 
   @mock_repo "fixtures/mock_repo.json"
   @mock_pull_request "fixtures/mock_pull_request.json"
