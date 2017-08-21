@@ -1,4 +1,4 @@
-defmodule GitInspect.PullRequests.Inspector do
+defmodule GitInspect.PullRequests.Repository do
   use GenServer
   require Logger
   alias GitInspect.Github.{Repositories, PullRequests}

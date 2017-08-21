@@ -8,7 +8,7 @@ defmodule GitInspect.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      {GitInspect.PullRequests.Inspector, "lodash"},
+      {GitInspect.PullRequests.Repository, "lodash"},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
