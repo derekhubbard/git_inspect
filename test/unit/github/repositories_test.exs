@@ -6,6 +6,6 @@ defmodule GitInspect.Github.RepositoriesTest do
     user = "octocat"
     repositories = Repositories.list_users(user)
 
-    repositories |> Enum.each(&(assert &1["owner"]["login"] == user))
+    repositories |> Enum.each(&(assert &1.owner.login == user))
   end
 end

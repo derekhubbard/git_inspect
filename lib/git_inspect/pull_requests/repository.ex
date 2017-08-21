@@ -14,10 +14,6 @@ defmodule GitInspect.PullRequests.Repository do
     GenServer.call(__MODULE__, {:get_all})
   end
 
-  def get_by_title(name) do
-    GenServer.call(__MODULE__, {:get_by_title, name})
-  end
-
   # server api
 
   def init(organization) do
@@ -51,10 +47,10 @@ defmodule GitInspect.PullRequests.Repository do
     {:reply, pulls, pulls}
   end
 
-  def handle_call({:get_by_title, title}, _from, pulls) do
-    filtered_pulls = pulls
-    |> Enum.filter(&(&1["title"] == title))
-
-    {:reply, filtered_pulls, pulls}
-  end
+  # def handle_call({:get_by_title, title}, _from, pulls) do
+  #   filtered_pulls = pulls
+  #   |> Enum.filter(&(&1["title"] == title))
+  #
+  #   {:reply, filtered_pulls, pulls}
+  # end
 end

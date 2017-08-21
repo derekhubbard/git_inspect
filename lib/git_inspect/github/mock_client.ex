@@ -1,4 +1,5 @@
 defmodule GitInspect.Github.MockClient do
+  import GitInspect.Factory
   require Logger
   alias GitInspect.Github.MockData
 
@@ -11,10 +12,14 @@ defmodule GitInspect.Github.MockClient do
   end
 
   defp repositories_list_users() do
-    [ MockData.get_repository() ]
+    [
+      build(:repository)
+    ]
   end
 
   defp pulls_list() do
-    [ MockData.get_pull_request() ]
+    [
+      build(:pull_request)
+    ]
   end
 end
