@@ -11,7 +11,7 @@ defmodule GitInspect.Github.MockClient do
   end
 
   defp repositories_list_users() do
-    [ MockData.get_repo() ]
+    [ MockData.get_repository() ]
   end
 
   defp pulls_list() do
