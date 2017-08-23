@@ -22,4 +22,16 @@ defmodule GitInspect.PullRequests.InspectorTest do
     assert pulls |> is_map()
     assert pulls == expected_result
   end
+
+  test "get all closed and never merged pull requests by project returns only closed pulls that were never merged and groups them by project" do
+    expected_result = [
+      {:"Hello-World-Again", 2},
+      {:"Hello-World", 1}
+    ]
+
+    pulls = Inspector.get_all_unmerged_closed_by_project()
+
+    assert pulls |> is_list()
+    assert pulls == expected_result
+  end
 end

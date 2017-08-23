@@ -6,6 +6,7 @@ defmodule GitInspect.PullRequests.Inspector do
     |> Enum.filter(&(&1.title == expected_title))
   end
 
+  # get all merged requests by week
   def get_all_merged_requests_by_week() do
     Repository.get_all()
     |> Enum.reduce(%{}, &(do_get_all_merged_requests_by_week(&1, &2)))
@@ -34,5 +35,19 @@ defmodule GitInspect.PullRequests.Inspector do
 
   defp get_week_start(date) do
     Timex.beginning_of_week(date, :sun)
+  end
+
+  # get all unmerged closed by project
+  def get_all_unmerged_closed_by_project() do
+    Repository.get_all()
+    |> Enum.reduce([], &(do_get_all_unmerged_closed_by_project(&1, &2)))
+    |> Enum.sort(&(elem(&1, 1) > elem(&2, 1)))
+  end
+
+  defp do_get_all_unmerged_closed_by_project(pull, result) do
+    case pull.closed_at != nil && pull.merged_at == nil do
+      true -> result |> Keyword.update(pull.base.repo.name |> String.to_atom(), 1, &(&1 + 1))
+      false -> result
+    end
   end
 end
