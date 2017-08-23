@@ -20,7 +20,7 @@ defmodule GitInspect.Github.MockClient do
   defp pulls_list() do
     [
       build(:pull_request, title: "feature-1"),
-      build(:pull_request, title: "feature-2")
+      build(:pull_request, title: "feature-2", merged_at: "2012-01-26T19:01:12Z")
     ]
   end
 end
